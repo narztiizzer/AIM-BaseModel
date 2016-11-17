@@ -1,0 +1,62 @@
+apply plugin: 'com.android.library'
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'BaseModel'
+
+    publishedGroupId = 'group.aim.framework'
+    libraryName = 'BaseModel'
+    artifact = 'base-model'
+
+    libraryDescription = 'Annotation used for another'
+
+    siteUrl = 'https://github.com/narztiizzer/AIM-BaseModel'
+    gitUrl = 'https://github.com/narztiizzer/AIM-BaseModel.git'
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'narztiizzer'
+    developerName = 'Nattapong Poomtong'
+    developerEmail = 'nattapong.poom@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "24.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'group.aim.framework:annotation:0.1.0'
+    compile 'group.aim.framework:base-datetime:0.1.0'
+    compile 'group.aim.framework:helper:0.1.0'
+    compile 'com.codesnippets4all:quick-json:1.0.4'
+}
+
+apply from: 'https://dl.dropboxusercontent.com/u/83667991/Library/Script/install-v1.gradle'
+apply from: 'https://dl.dropboxusercontent.com/u/83667991/Library/Script/bintray-v1.gradle'
